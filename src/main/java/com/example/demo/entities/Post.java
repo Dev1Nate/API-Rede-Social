@@ -1,13 +1,19 @@
 package com.example.demo.entities;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.stereotype.Repository;
+
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 
+@Document
 public class Post implements Serializable,Comparable<Post> {
 
+    @Id
     private String id;
     private String title;
     private String body;

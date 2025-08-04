@@ -1,12 +1,17 @@
 package com.example.demo.entities;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 
+@Document
 public class User implements Serializable,Comparable<User>{
 
+    @Id
     private String id;
     private String name;
     private String email;
