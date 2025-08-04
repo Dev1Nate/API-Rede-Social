@@ -2,13 +2,16 @@ package com.example.demo.dto;
 
 
 import com.example.demo.entities.User;
+import jakarta.validation.constraints.NotBlank;
 
 import java.io.Serializable;
 
 public class UserDTO implements Serializable {
 
     private String id;
+    @NotBlank(message = "Name Nao Pode Ser Vazio")
     private String name;
+    @NotBlank(message = "Email Nao Pode Ser Vazio")
     private String email;
 
     public UserDTO(){}
