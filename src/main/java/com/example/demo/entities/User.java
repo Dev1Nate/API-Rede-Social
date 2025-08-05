@@ -1,7 +1,7 @@
 package com.example.demo.entities;
 
 
-import jakarta.validation.constraints.NotBlank;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -17,8 +17,7 @@ public class User implements Serializable,Comparable<User>{
     private String name;
     private String email;
 
-    @DBRef(lazy = true)
-    private LinkedHashSet<Post> posts = new LinkedHashSet<>();
+    private List<Post> posts = new ArrayList<>();
 
     public User(){}
 
@@ -52,7 +51,7 @@ public class User implements Serializable,Comparable<User>{
         this.email = email;
     }
 
-    public LinkedHashSet<Post> getPosts() {
+    public List<Post> getPosts() {
         return posts;
     }
 

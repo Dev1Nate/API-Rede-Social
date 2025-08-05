@@ -1,6 +1,7 @@
 package com.example.demo.resources;
 
 import com.example.demo.dto.UserDTO;
+import com.example.demo.entities.Post;
 import com.example.demo.entities.User;
 import com.example.demo.services.UserService;
 import jakarta.validation.Valid;
@@ -53,5 +54,11 @@ public class UserResource {
         user.setId(id);
         user = service.update(user);
         return ResponseEntity.ok().body(user);
+    }
+
+    @GetMapping(value = "/{id}/posts")
+    public ResponseEntity<List<Post>> posts(@PathVariable String id){
+        List<Post> posts = service.postPerUser(id);
+        return ResponseEntity.ok().body(posts);
     }
 }

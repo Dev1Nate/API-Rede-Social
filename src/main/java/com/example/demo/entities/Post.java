@@ -7,7 +7,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
@@ -20,7 +21,7 @@ public class Post implements Serializable,Comparable<Post> {
     @NotBlank(message = "Titulo Nao Pode Ser Vazio")
     private String title;
     private String body;
-    private Date date;
+    private LocalDate date;
     @NotBlank(message = "Author Nao Pode Ser Nulo")
     private AuthorDTO author;
 
@@ -29,7 +30,7 @@ public class Post implements Serializable,Comparable<Post> {
     public Post() {
     }
 
-    public Post(String id, String title, String body, Date date, AuthorDTO author) {
+    public Post(String id, String title, String body, LocalDate date, AuthorDTO author) {
         this.id = id;
         this.title = title;
         this.body = body;
@@ -69,11 +70,11 @@ public class Post implements Serializable,Comparable<Post> {
         this.author = author;
     }
 
-    public Date getDate() {
+    public LocalDate  getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate  date) {
         this.date = date;
     }
 

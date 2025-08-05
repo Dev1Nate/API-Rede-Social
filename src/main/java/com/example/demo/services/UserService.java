@@ -1,12 +1,14 @@
 package com.example.demo.services;
 
 import com.example.demo.dto.UserDTO;
+import com.example.demo.entities.Post;
 import com.example.demo.entities.User;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,6 +49,10 @@ public class UserService {
     public void updateUser(User updateUser,User userToUpdate ){
         userToUpdate.setEmail(updateUser.getEmail());
         userToUpdate.setName(updateUser.getName());
+    }
 
+    public List<Post> postPerUser(String id){
+        User user = repository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Object Not Found"));
+        return user.getPosts();
     }
 }
