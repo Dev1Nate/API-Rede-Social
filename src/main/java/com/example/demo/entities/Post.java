@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import jakarta.validation.constraints.NotBlank;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Repository;
@@ -15,9 +16,11 @@ public class Post implements Serializable,Comparable<Post> {
 
     @Id
     private String id;
+    @NotBlank(message = "Titulo Nao Pode Ser Vazio")
     private String title;
     private String body;
     private Date date;
+    @NotBlank(message = "Author Nao Pode Ser Nulo")
     private User author;
 
     Set<Comment> comments = new TreeSet<>();
