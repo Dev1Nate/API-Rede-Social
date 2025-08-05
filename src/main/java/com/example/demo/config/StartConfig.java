@@ -19,9 +19,9 @@ public class StartConfig implements CommandLineRunner {
     public void run(String... args) throws Exception {
         user.deleteAll();
 
-        User maria = new User(null, "Maria Brown", "maria@gmail.com");
-        User alex = new User(null, "Alex Green", "alex@gmail.com");
-        User bob = new User(null, "Bob Grey", "bob@gmail.com");
+        User maria = new User("3", "Maria Brown", "maria@gmail.com");
+        User alex = new User("2", "Alex Green", "alex@gmail.com");
+        User bob = new User("1", "Bob Grey", "bob@gmail.com");
         user.saveAll(Arrays.asList(maria,alex,bob));
 
 

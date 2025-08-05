@@ -31,10 +31,22 @@ public class UserService {
     }
 
     public User insert(User user){
-        return repository.insert(user);
+        return repository.save(user);
     }
 
     public User fromDTO(UserDTO dto){
         return new User(dto.getId(),dto.getName(),dto.getEmail());
+    }
+
+    public User update(User obj) {
+        User newUser = repository.findById(obj.getId()).orElseThrow(() -> new ObjectNotFoundException("Object Not Found"));
+        updateUser(newUser, obj);
+        return repository.save(newUser);
+    }
+
+    public void updateUser(User updateUser,User userToUpdate ){
+        userToUpdate.setEmail(updateUser.getEmail());
+        userToUpdate.setName(updateUser.getName());
+
     }
 }
