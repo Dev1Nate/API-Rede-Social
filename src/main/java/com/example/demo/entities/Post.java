@@ -1,6 +1,7 @@
 package com.example.demo.entities;
 
 import com.example.demo.dto.AuthorDTO;
+import com.example.demo.dto.CommentDTO;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -8,10 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.Objects;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 @Document
 public class Post implements Serializable,Comparable<Post> {
@@ -25,7 +23,7 @@ public class Post implements Serializable,Comparable<Post> {
     @NotBlank(message = "Author Nao Pode Ser Nulo")
     private AuthorDTO author;
 
-    Set<Comment> comments = new TreeSet<>();
+    List<CommentDTO> comments = new ArrayList<>();
 
     public Post() {
     }
@@ -76,6 +74,14 @@ public class Post implements Serializable,Comparable<Post> {
 
     public void setDate(LocalDate  date) {
         this.date = date;
+    }
+
+    public List<CommentDTO> getComments() {
+        return comments;
+    }
+
+    public void addComments(CommentDTO comments) {
+        this.comments.add(comments);
     }
 
     @Override
