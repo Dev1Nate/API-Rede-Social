@@ -26,11 +26,8 @@ public class UserService {
     }
 
     public void delete(String id){
-        try {
-            repository.deleteById(id);
-        }catch (IllegalArgumentException e){
-            throw new ObjectNotFoundException("Object Not Found");
-        }
+        findOne(id);
+        repository.deleteById(id);
     }
 
     public User insert(User user){
