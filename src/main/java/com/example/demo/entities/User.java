@@ -3,12 +3,11 @@ package com.example.demo.entities;
 
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
-import java.util.Objects;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 @Document
 public class User implements Serializable,Comparable<User>{
@@ -18,7 +17,8 @@ public class User implements Serializable,Comparable<User>{
     private String name;
     private String email;
 
-    Set<Post> posts = new TreeSet<>();
+    @DBRef(lazy = true)
+    private LinkedHashSet<Post> posts = new LinkedHashSet<>();
 
     public User(){}
 
@@ -50,6 +50,14 @@ public class User implements Serializable,Comparable<User>{
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public LinkedHashSet<Post> getPosts() {
+        return posts;
+    }
+
+    public void addPosts(Post posts) {
+        this.posts.add(posts);
     }
 
     @Override

@@ -41,9 +41,15 @@ public class StartConfig implements CommandLineRunner {
         LocalDate date2 = LocalDate.parse("10/06/2024",form);
 
         Post p1 = new Post("1","Partiu Viage","Fui Para o Litoral", Date.valueOf(date1),new AuthorDTO(maria));
-        Post p2 = new Post("3","Retorno A Escola","Acabou as Ferias",Date.valueOf(date2),new AuthorDTO(maria));
+        Post p2 = new Post("2","Retorno A Escola","Acabou as Ferias",Date.valueOf(date2),new AuthorDTO(maria));
 
         post.saveAll(Arrays.asList(p1,p2));
+
+        maria.addPosts(p1);
+        maria.addPosts(p2);
+        maria.addPosts(p2);
+
+        user.save(maria);
 
 
     }
