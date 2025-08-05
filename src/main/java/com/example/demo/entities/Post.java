@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import com.example.demo.dto.AuthorDTO;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -21,14 +22,14 @@ public class Post implements Serializable,Comparable<Post> {
     private String body;
     private Date date;
     @NotBlank(message = "Author Nao Pode Ser Nulo")
-    private User author;
+    private AuthorDTO author;
 
     Set<Comment> comments = new TreeSet<>();
 
     public Post() {
     }
 
-    public Post(String id, String title, String body, Date date, User author) {
+    public Post(String id, String title, String body, Date date, AuthorDTO author) {
         this.id = id;
         this.title = title;
         this.body = body;
@@ -60,11 +61,11 @@ public class Post implements Serializable,Comparable<Post> {
         this.body = body;
     }
 
-    public User getAuthor() {
+    public AuthorDTO getAuthor() {
         return author;
     }
 
-    public void setAuthor(User author) {
+    public void setAuthor(AuthorDTO author) {
         this.author = author;
     }
 

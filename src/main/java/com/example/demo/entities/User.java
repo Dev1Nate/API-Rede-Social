@@ -15,10 +15,7 @@ public class User implements Serializable,Comparable<User>{
 
     @Id
     private String id;
-
-    @NotBlank(message = "Name Nao Pode Ser Vazio")
     private String name;
-    @NotBlank(message = "Email Nao Pode Ser Vazio")
     private String email;
 
     Set<Post> posts = new TreeSet<>();
